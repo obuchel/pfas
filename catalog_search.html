@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="Tag-Input-With-Autocomplete-jQuery-Tagator/fm.tagator.jquery.css" />
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/4.2.3/style/dc.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
+     <!------<link rel="stylesheet" type="text/css" href="editor.dataTables.css">---->
+     
+    
+     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+     <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
+     <link rel="stylesheet" type="text/css" href="final_style.css">
+    
+     <!----  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/4.2.3/dc.js"></script>-->
+   <!----   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>--->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+      <!---- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.5.4/crossfilter.min.js"></script> -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+<!-----<script type="text/javascript" src="dataTables.editor.min.js"></script>--->
+<script src="Tag-Input-With-Autocomplete-jQuery-Tagator/fm.tagator.jquery.js"></script>
+ <!--- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>--->
+  <script src="get_boxplot.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+<script src="https://unpkg.com/d3-moveto"></script>
+   <!--- <script src="tree_code.js"></script>
+    
+<script type="module" src="multiple-select-develop/src/multiple-select.js"></script>
+      <link rel="stylesheet" type="text/css" href="multiple-select.css">
+--->
+    
+    <style>
+        .node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  /*stroke: steelblue;*/
+  stroke-width: 1.5px;
+}
+
+.node_text {
+    font: 16px sans-serif;
+/*    text-anchor: middle !important;*/
+  dominant-baseline: middle !important;
+}
+
+.tick {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke:grey;
+}
+
+.legends{
+  position: fixed;
+  top: 1px;
+  z-index: -1;
+  left:5px;
+}
+
+.main{
+    position: relative;
+    top: 99px;
+    z-index: 5
+}
+
+
+.tlink{
+  stroke: rgb(158, 156, 156);
+font-family: Verdana;
+font-size: 12px;
+stroke-width: 0.04em;
+}
+.tt {
+    padding: 42px;
+}
+        #tagator_nes, #tagator_chems {
+            
+            width: 800px !important;
+        }
+
+        button {
+  background-color: #4CAF50; /* Green */
+  border: 1 px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+        
+        .tagator_tag1 {
+    display: inline-block;
+    background-color: red !important;
+    border-radius: 2px;
+    color: #fff;
+    padding: 2px 20px 2px 4px;
+    font-size: 13px;
+    margin: 2px;
+    position: relative;
+    vertical-align: top;
+}
+        #chart {
+            
+            
+            height: 750px;
+        }
+
+    .dc-table-group {
+         visibility: collapse;
+ }
+        
+tr.dc-table-row.sel-rows {
+     background-color: lightblue;
+}
+.coral {
+  accent-color: red !important;
+}
+        
+        .lab{
+               
+    padding: 2px;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "Arial";
+    border: 0.5px;
+    outline: 0.5px solid black;
+    margin: 0 2px;
+    background: steelblue;
+    font-size: 15px;
+    line-height: 15px;
+    color: white;
+    width: auto;
+    height: auto;
+    box-sizing: content-box;
+        }
+        
+        .lab:hover {
+    background: white;
+             color: black;
+              outline: 0.5px solid black;
+  
+}
+.line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 0.5;
+}
+        .line2 {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 5;
+}
+        
+        .container{
+    /*width: 600px;*/
+}
+.panel{
+   /* height: 150px;*/
+    overflow: auto !important;
+}
+        
+          #example1_wrapper, #example1, #chart{
+            
+            margin: 30px;
+        }
+        #example1_length {
+            margin-left: 30px;
+            
+        }
+    /* EOS */
+  </style>
+
+
+  
+</head>
+<body>
+    
+     <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu">
+ <li><a href="try_search.html">Named Entities (NEs)</a></li>
+           <li><a href="dashboard_dynamic_plot_gore_chem1.html">Chemical Substances</a></li>
+              <li><a href="dashboard_dynamic_plot_gore_states1.html">States (bills introduced)</a></li>
+              <li><a href="try_search_states.html">States (NEs and Chemical Substances)</a></li>
+            <li><a href="terms_search.html">Terms</a></li>
+              <li><a href="catalog_search.html">Relevant bills</a></li>
+           <!---- <li><a href="#">Four</a></li>--->
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+         <!----   <li><input type="search" placeholder="Search"></li>
+            <li><button type="button" class="button">Search</button></li>--->
+          </ul>
+        </div>
+      </div>
+    
+    
+    
+    
+     <div class="grid-x grid-margin-x" id="content" data-mutate="xow22x-sticky" data-events="mutate">
+          <div class="medium-9 cell">
+  
+ <div class="cell">
+     <h1 style="margin-left:30px;">Relevant Bills</h1>
+              </div>
+        
+              <div class="medium-1 cell">
+                    
+             
+  <!---  <button id="b_one" type="button" style="border: 2px solid black;" onclick="changeColor('classification')">Classification</button>
+<button id="b_two" type="button" onclick="changeColor('number')">Number of bills</button> 
+<button id="b_three" type="button" onclick="changeColor('entropy')">Local/Global</button>  --->    
+                  
+                   
+ 
+
+
+                 <table id="example1" class="display" style="width:100%">
+        <thead>
+            <tr>
+     
+                <th>Title</th>
+                <th>Bill Number</th>
+               <!--- <th>Description</th>-->
+                <th>State</th>
+                <th>Progress</th>
+              <!---   <th>URL</th>
+                <th>Summary</th>--->
+                <th>Last Update</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+      
+               <th>Title</th>
+                <th>Bill Number</th>
+               <!--- <th>Description</th>-->
+                <th>State</th>
+                <th>Progress</th>
+              <!---   <th>URL</th>
+                <th>Summary</th>--->
+                 <th>Last Update</th>
+                <th>Active</th>
+            </tr>
+        </tfoot>
+    </table> 
+                  
+              </div>
+        </div>
+         
+         
+         
+          <div class="medium-3 cell sticky-container" data-sticky-container="" style="height: 518px;">
+            <div class="sticky is-at-top is-stuck" data-sticky="" data-anchor="content" data-resize="xow22x-sticky" data-mutate="xow22x-sticky" data-e="2uixt7-e" style="max-width: 250px; margin-top: 5em; bottom: auto; top: 0px;" data-events="mutate">
+
+           
+                
+                <div id="ts"></div>  
+            </div>
+          </div>
+        
+        </div>
+    
+     <script type="text/javascript">//<![CDATA[
+    //]]>
+    </script>
+    <div id="dialog-form" style="visibility:hidden">
+        <div id="tabs" class='container'>
+  <ul>
+    <li><a href="catalog_search.html#tabs-1">Bill</a></li>
+    <li><a href="catalog_search.html#tabs-2">Plots of NEs and Chem Substances</a></li>
+    <li><a href="catalog_search.html#tabs-3">Prediction plots</a></li>
+  </ul>
+  <div id="tabs-1">
+<div title="Update Bill">
+  <p class="validateTips">All form fields are required.</p>
+  <form>
+    <fieldset>
+     <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-6">
+          <div class="cell">
+         <label for="active">Active:</label>
+        <input type="checkbox" id="active" name="active" checked>
+            </div>
+      <div class="cell">
+ <label for="ID">ID</label>
+      <input type="text" name="ID" id="ID" value="" class="text ui-widget-content ui-corner-all">
+      </div>
+          <div class="cell">
+  <label for="bill_number">Bill Number</label>
+              <input type="text" name="bill_number" id="bill_number" value="" class="text ui-widget-content ui-corner-all">
+      </div>
+         <div class="cell">
+ <label for="state">State</label>
+      <input type="text" name="state" id="state" value="" class="text ui-widget-content ui-corner-all">
+      </div>
+         
+         <div class="cell"> <label for="progress">Progress</label>
+      <input type="text" name="progress" id="progress" value="" class="text ui-widget-content ui-corner-all">
+         </div>
+          <div class="cell">
+           <label for="last_update">Last Update:</label>
+      <input type="text" name="last_update" id="last_update" value="" class="text ui-widget-content ui-corner-all"> 
+          </div>
+        </div>
+         <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-2">
+          <div class="cell">
+      <label for="title1">Title</label>
+      <input type="text" name="title1" id="title1" value="" class="text ui-widget-content ui-corner-all">
+             </div>
+             <div class="cell">
+                 <label for="URL">URL <a id="list" target="_blank" href="catalog_search.html">link</a></label>
+      <input type="text" name="URL" id="URL" value="" class="text ui-widget-content ui-corner-all">  
+               </div>
+              </div>
+         <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-2">
+        <div class="cell">
+        <label for='chems'>Chem Substances Tags:</label>
+        <input id="chems" name="chems" value="" placeholder="Please input some tags">
+          <label for="nes">Named Entities</label>
+      <input name="nes" id="nes" value="" placeholder="Please input some tags"> 
+             </div>
+            <div class="cell">
+        <label for="pg1">Keywords (PageRank1):</label>
+      <input type="text" name="pg1" id="pg1" value="" class="text ui-widget-content ui-corner-all"> 
+        <label for="pg2">Keywords (PageRank2):</label>
+      <input type="text" name="pg2" id="pg2" value="" class="text ui-widget-content ui-corner-all"> 
+        <label for="rake">Keywords (RAKE):</label>
+      <input type="text" name="rake" id="rake" value="" class="text ui-widget-content ui-corner-all"> 
+         </div>
+             </div>
+            <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-2">
+            <div class="cell">  
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="4" cols="50"></textarea>
+                 </div>
+             <div class="cell">  
+                   <label for="summary">Summary:</label>
+        <textarea name="summary" id="summary" rows="4" cols="50"></textarea>
+                  </div>
+                   </div>
+     <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-1">
+                  <div class="cell">        
+        <label for="full_text">Full Text:</label>
+        <textarea name="full_text" id="full_text" rows="4" cols="50"></textarea>
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+             </div>
+          </div>
+      
+    </fieldset>
+  </form>
+</div>
+      
+    
+  </div>
+  <div id="tabs-2" style="height:55rem"  class='panel'>
+        <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-2">
+          <div class="cell">
+    <div id="chart2"></div>
+            </div>
+             <div class="cell">
+       <div id="chart3"></div>
+            </div>
+      </div>
+      <div id="labels"  style="position:relative; top:27rem"></div>
+  </div>
+  <div id="tabs-3" style="height:2600px" class='panel'>
+    <div id="chart4"></div>
+    <div id="tree" style="width: 100%; height:2250px;z-index:15000 !important;"></div>
+  </div>
+</div>
+    </div>
+     <script src="js_code.js"></script>  
+  <script src="tree_code.js"></script>
+</body>
+</html>

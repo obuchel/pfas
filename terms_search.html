@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/4.2.3/style/dc.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
+   <!----  <link rel="stylesheet" type="text/css" href="editor.dataTables.css">--->
+     
+    
+     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+     <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
+     <link rel="stylesheet" type="text/css" href="final_style.css">
+    
+     <!----  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/4.2.3/dc.js"></script>-->
+   <!----   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>--->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+      <!---- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.5.4/crossfilter.min.js"></script> -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+<!----<script type="text/javascript" src="dataTables.editor.min.js"></script>--->
+
+    <!---- 
+<script type="module" src="multiple-select-develop/src/multiple-select.js"></script>
+      <link rel="stylesheet" type="text/css" href="multiple-select.css">
+--->
+    
+    <style>
+        
+        
+   
+        .material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+        button {
+  background-color: #4CAF50; /* Green */
+  border: 1 px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+        
+        
+        #chart {
+            
+            
+            height: 750px;
+        }
+
+    .dc-table-group {
+         visibility: collapse;
+ }
+        
+tr.dc-table-row.sel-rows {
+     background-color: lightblue;
+}
+.coral {
+  accent-color: red !important;
+}
+td {  white-space: nowrap;
+    overflow: hidden;
+  text-overflow: ellipsis;
+    max-width:200px;
+        }
+        
+         #example1_wrapper, #example1, #chart{
+            
+            margin: 30px;
+        }
+        #example1_length {
+            margin-left: 30px;
+            
+        }
+
+  </style>
+
+
+  
+</head>
+<body>
+    
+     <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu">
+               <li><a href="try_search.html">Named Entities (NEs)</a></li>
+           <li><a href="dashboard_dynamic_plot_gore_chem1.html">Chemical Substances</a></li>
+              <li><a href="dashboard_dynamic_plot_gore_states1.html">States (bills introduced)</a></li>
+              <li><a href="try_search_states.html">States (NEs and Chemical Substances)</a></li>
+            <li><a href="terms_search.html">Terms</a></li>
+              <li><a href="catalog_search.html">Relevant bills</a></li>
+           <!---- <li><a href="#">Four</a></li>--->
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+         <!----   <li><input type="search" placeholder="Search"></li>
+            <li><button type="button" class="button">Search</button></li>--->
+          </ul>
+        </div>
+      </div>
+    
+    
+    
+    
+     <div class="grid-x grid-margin-x" id="content" data-mutate="xow22x-sticky" data-events="mutate">
+          <div class="medium-9 cell">
+  
+ <div class="cell">
+     <h1  style="margin-left:30px;">Terms</h1>
+              </div>
+        
+              <div class="medium-1 cell">
+                    
+             
+  <!---  <button id="b_one" type="button" style="border: 2px solid black;" onclick="changeColor('classification')">Classification</button>
+<button id="b_two" type="button" onclick="changeColor('number')">Number of bills</button> 
+<button id="b_three" type="button" onclick="changeColor('entropy')">Local/Global</button>  --->                     
+
+                 <table id="example1" class="display" style="width:100%">
+        <thead>
+            <tr>
+<!----['name', 'formula', 'synonyms','id', 'iupac_name', 'type']--->
+                <th>Name</th>
+                <th>Formula</th>
+               <!--- <th>Description</th>-->
+                <th>Synonyms</th>
+                <th>iupac_name</th>
+              <!---   <th>URL</th>
+                <th>Summary</th>--->
+                <th>Type</th>
+                <th>Category</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+      
+               <th>Name</th>
+                <th>Formula</th>
+               <!--- <th>Description</th>-->
+                <th>Synonyms</th>
+                <th>iupac_name</th>
+              <!---   <th>URL</th>
+                <th>Summary</th>--->
+                <th>Type</th>
+                <th>Category</th>
+                <th>Status</th>
+            </tr>
+        </tfoot>
+    </table> 
+                  
+              </div>
+        </div>
+         
+         
+         
+          <div class="medium-3 cell sticky-container" data-sticky-container="" style="height: 518px;">
+            <div class="sticky is-at-top is-stuck" data-sticky="" data-anchor="content" data-resize="xow22x-sticky" data-mutate="xow22x-sticky" data-e="2uixt7-e" style="max-width: 250px; margin-top: 5em; bottom: auto; top: 0px;" data-events="mutate">
+
+           
+                
+                <div id="ts"></div>  
+            </div>
+          </div>
+        
+        </div>
+    
+
+    <script type="text/javascript">//<![CDATA[
+        //var editor;
+      var table;
+    var data={};
+        data["data"]=[];
+    
+$(document).ready(function () {
+  
+d3.json("all_terms.json", function(treeData) {
+    
+ //   console.log(treeData);
+    
+   ///////////////////////////////////////////// 
+    
+function filter_chart(sels) {
+    var filtered = Object.keys(allOptions).reduce(function (filtered, key) {
+    if (sels.indexOf(key)>-1) filtered[key] = allOptions[key];
+    return filtered;
+}, {});
+   context = canvas.node().getContext('2d');
+  context.save();
+       context.clearRect(0, 0, 0, 0);
+        context.restore();
+      highlightGroup.html("");
+    make_plot(filtered);
+    //console.log(filtered); ///make chart...
+}    
+    
+    
+    //"capital projects account": [0, "0", 2019, 2021, 737]
+ function get_filtered_datatable() {
+    var filteredrows = $("#example1").dataTable()._('tr', {"filter": "applied"});
+     var arr=[];
+     //var sels=[];
+    for ( var i = 0; i < filteredrows.length; i++ ) {
+        arr.push(filteredrows[i]);
+        //sels.push(filteredrows[i]["Title"]);
+    };
+     
+     //console.log(sels);
+     
+     //filter_chart(sels);
+}
+    
+   // editor = new $.fn.dataTable.Editor( {
+        /* "ajax": "ners_catalog/ners_1006335.json",
+        "fields": [ {
+                label:     "Active:",
+                name:      "active",
+                type:      "checkbox",
+                separator: "|",
+                options:   [
+                    { label: '', value: 1 }
+                ]
+            }, {
+                label: "Title:",
+                name:  "Lead Free Schools Act"
+            }]
+            
+            
+            <!----['name', 'formula', 'synonyms','id', 'iupac_name', 'type']--->
+                <th>Name</th>
+                <th>Formula</th>
+               <!--- <th>Description</th>-->
+                <th>Synonyms</th>
+                <th>iupac_name</th>
+              <!---   <th>URL</th>
+                <th>Summary</th>--->
+                <th>Type</th>
+                <th>Category</th>
+            
+            
+            */
+       /* "data": data["data"],
+        "table": "#example1",
+          "idSrc": "id",
+        "fields": [  {
+                label: "Name:",
+                name:  "name"
+            }, {
+                label: "Formula:",
+                name:  "formula"
+            }, {
+                label: "Synonyms:",
+                name:  "synonyms",
+                type:  "textarea" 
+            }, {
+                label: "Iupac Name:",
+                name:  "iupac_name"
+            },{
+                label: "Type:",
+                name:  "type"
+            }, {
+                label: "Category:",
+                name:  "category"
+            }, {
+                label: "Status:",
+                name:  "status"
+            }
+                   
+        ]
+    } );*/
+    
+
+  var d=treeData;
+for (var i=0; i<d.length; i++) {
+   var temp={};
+    //temp["Month"]=1;
+   // var kk=jQuery.parseJSON(d[i]["progress"].replaceAll('\'','"'));
+    //console.log(kk);
+    //['bill_id', 'bill_number', 'title', 'description', 'state', 'session','filename', 'status', 'status_date', 'progress', 'url', 'status_date1','state2', 'state1', 'latitude', 'longitude', 'time', 'time1', 'counts','full_text', 'summary'],
+    /*temp["ID"]=i//""+d[i]["bill_id"];
+    temp["Title"]=d[i]["title"];
+    temp["Bill_Number"]=d[i]["bill_number"];
+    //temp["Description"]=d[i]["description"].substring(0,50);
+    temp["State"]=d[i]["state"];
+    temp["Progress"]=d[i]["status"];//kk[kk.length-1]["event"];
+    temp["URL"]=d[i]["url"];
+   temp["Summary"]=d[i]["summary"];
+   // console.log(d[i]["last_update"]);
+   // if (typeof(d[i]["last_update"])!="undefined") { 
+    temp["last_update"]=d[i]["last_update"];
+   /* } else {
+     temp["last_update"]="0000-00-00";   
+        
+    }*/
+   /* temp["active"]="0";
+    temp["description"]=d[i]["description"];
+    temp["full_text"]=d[i]["full_text"];
+    temp["chems"]=d[i]["chem"];
+    temp["nes"]=d[i]["ners"];
+    temp["pg1"]=d[i]["pg1"];
+    temp["pg2"]=d[i]["pg2"];
+    temp["rake"]=d[i]["rake"];*/
+    data["data"].push(d[i]);
+}
+
+    //console.log(data);
+    $.fn.dataTable.ext.errMode = 'throw';
+     table=$('#example1').DataTable({
+        data: data["data"],
+       /* initComplete : function() {
+        var input = $('.dataTables_filter input').unbind(),
+            self = this.api(),
+            $searchButton = $('<button>')
+                       .text('search')
+                       .click(function() {
+                          self.search(input.val()).draw();
+                       }),
+            $clearButton = $('<button>')
+                       .text('clear')
+                       .click(function() {
+                          input.val('');
+                          $searchButton.click(); 
+                       }) 
+        $('.dataTables_filter').append($searchButton, $clearButton);
+    },*/
+          columns: [
+           // { data: "ID" }, ['name', 'formula', 'synonyms','id', 'iupac_name', 'type']-
+            { data: "name" },
+            { data: "formula" },
+            //{ data: "Description" },
+            { data: "synonyms" },
+           
+             // { data: "last_update" },
+              
+              
+             
+               { data: "iupac_name" },
+             { data: "type" },
+               { data: "category" },
+               { data: "status"}/*,
+               render: function (data, type, row, meta) {
+                    if ( type === 'display' ) {
+        return  
+                           '<span class="material-symbols-outlined">circle</span>';
+    }
+                  
+                   
+                   
+               }
+               
+               
+               
+               }*/
+           
+        ],
+        select: {
+            style: 'os',
+            selector: 'td:not(:last-child)' // no row selection on last column
+        },
+        buttons: [
+           /* { extend: "create", editor: editor },
+            { extend: "edit",   editor: editor },
+            { extend: "remove", editor: editor }*/
+        ],    
+         responsive: true,
+         select: true,
+        rowCallback: function ( row, data ) {
+            // Set the checked state of the checkbox in the table
+            $('input.editor-active', row).prop( 'checked', data.active == 1 );
+        },
+         //dom: 'Bfrtilp<"clear">>rt<"bottom"iflp<"clear">>'
+         dom: '<"top"Bif<"clear">>rt<"bottom"lp<"clear">>'
+    }).on('search.dt', function () {
+           // eventFired('Search');
+         get_filtered_datatable();
+        
+        });
+    
+     $('#example1').on( 'change', 'input.editor-active', function () {
+        /*editor
+            .edit( $(this).closest('tr'), false )
+            .set( 'active', $(this).prop( 'checked' ) ? 1 : 0 )
+            .submit();*/
+    } );
+ 
+table.columns.adjust().draw();
+   // make_plot(all_points);
+ });
+    
+    
+ });
+   
+  //]]></script>
+
+ 
+
+</body>
+</html>
+
